@@ -28,12 +28,11 @@ namespace TicTacToeApp {
 			(p3 == p5 && p5 == p7 && p3 != 'b')) {
 			std::string m;
 			if (who == 'x') {
-				m = "O win!";
+				MessageBox::Show("O wins!", "Winner!", MessageBoxButtons::OK);
 			}
 			else {
-				m = "X win!";
+				MessageBox::Show("X wins!", "Winner!", MessageBoxButtons::OK);
 			}
-			MessageBox::Show(m, "Winner!", MessageBoxButtons::OK);
 		}
 	}
 
@@ -100,6 +99,7 @@ namespace TicTacToeApp {
 		void InitializeComponent(void)
 		{
 			System::ComponentModel::ComponentResourceManager^  resources = (gcnew System::ComponentModel::ComponentResourceManager(Game::typeid));
+			Form::CenterToScreen();
 			this->pole3 = (gcnew System::Windows::Forms::PictureBox());
 			this->pole2 = (gcnew System::Windows::Forms::PictureBox());
 			this->pole1 = (gcnew System::Windows::Forms::PictureBox());
@@ -253,6 +253,7 @@ namespace TicTacToeApp {
 			this->restart->TabIndex = 14;
 			this->restart->Text = L"Restart";
 			this->restart->UseVisualStyleBackColor = true;
+			this->restart->Click += gcnew System::EventHandler(this, &Game::restart_Click);
 			// 
 			// Game
 			// 
@@ -459,6 +460,35 @@ private: System::Void pole9_Click(System::Object^  sender, System::EventArgs^  e
 		pole9->Enabled = false;
 		checkWin();
 	}
+}
+void resetGame() {
+	pole1->Image = Image::FromFile(L"blank.png");
+	pole1->Enabled = true;
+	pole2->Image = Image::FromFile(L"blank.png");
+	pole2->Enabled = true;
+	pole3->Image = Image::FromFile(L"blank.png");
+	pole3->Enabled = true;
+	pole4->Image = Image::FromFile(L"blank.png");
+	pole4->Enabled = true;
+	pole5->Image = Image::FromFile(L"blank.png");
+	pole5->Enabled = true;
+	pole6->Image = Image::FromFile(L"blank.png");
+	pole6->Enabled = true;
+	pole7->Image = Image::FromFile(L"blank.png");
+	pole7->Enabled = true;
+	pole8->Image = Image::FromFile(L"blank.png");
+	pole8->Enabled = true;
+	pole9->Image = Image::FromFile(L"blank.png");
+	pole9->Enabled = true;
+	turnico->Image = Image::FromFile(L"Osmall.png");
+
+	p1 = 'b';	p2 = 'b';	p3 = 'b';
+	p4 = 'b';	p5 = 'b';	p6 = 'b';
+	p7 = 'b';	p8 = 'b';	p9 = 'b';
+	who = 'o';
+	}
+private: System::Void restart_Click(System::Object^  sender, System::EventArgs^  e) {
+	resetGame();
 }
 };
 }

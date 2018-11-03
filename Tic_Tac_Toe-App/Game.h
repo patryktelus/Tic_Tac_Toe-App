@@ -11,7 +11,7 @@ namespace TicTacToeApp {
 	using namespace System::Drawing;
 
 	/// <summary>
-	/// Summary for Game
+	/// Tic-Tac-Toe Game
 	/// </summary>
 
 	char p1, p2, p3, p4, p5, p6, p7, p8, p9;
